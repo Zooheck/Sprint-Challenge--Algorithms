@@ -49,6 +49,10 @@ class SortingRobot:
         else:
             return False
 
+    def back_to_start(self):
+        while self.can_move_left():
+            self.move_left()
+
     def swap_item(self):
         """
         The robot swaps its currently held item with the list item in front
@@ -99,16 +103,47 @@ class SortingRobot:
         Sort the robot's list.
         """
         # Fill this out
-        self.set_light_off()
-        for i in range(0, len(self._list) - 1):
-            if self._list[i+1] < self._list[i]:
-                self._list[i], self._list[i+1] = self._list[i+1], self._list[i]
-                self.set_light_on()
-        if self._light == "ON":
-            return self.sort()
-        # return self._list
+        # swap first item with none
+        self.set_light_on()
+        while self.light_is_on():
+            self.set_light_off()
+            while self.can_move_right():
+                self.swap_item()
+                self.move_right()
+                if self.compare_item() == 1:  # what i'm holding is greater
+                    self.swap_item()
+                    self.move_left()
+                    self.set_light_on()
+                elif self.compare_item() == -1:  # what i'm looking at it greater
+                    self.move_left()
+                    # self.set_light_on()
+
+            if self.can_move_right() == False and self.light_is_on():
+                self.back_to_start()
+            # if self.can_move_right() == False and self.light_is_on() == False:
+
+                # elif self.compare_item() == None and self.can_move_right() == False:
+                #     # self.back_to_start()
+                #     while self.can_move_left():
+                #         self.move_left()
+
+        # print(self._list)
+
+        # if self.compare_item() == 1 and self.can_move_right == False:
+        #     self.move_left()
+        #     sel
+
+        # self.set_light_off()
+        # for i in range(0, len(self._list) - 1):
+        #     if self._list[i+1] < self._list[i]:
+        #         self._list[i], self._list[i+1] = self._list[i+1], self._list[i]
+        #         self.set_light_on()
+        # if self.light_is_on:
+        #     return self.sort()
 
 
+robo = SortingRobot([5, 4, 9, 2, 11])
+robo.sort()
 if __name__ == "__main__":
     # Test our your implementation from the command line
     # with `python robot_sort.py`
