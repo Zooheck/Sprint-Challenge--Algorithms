@@ -120,30 +120,12 @@ class SortingRobot:
 
             if self.can_move_right() == False and self.light_is_on():
                 self.back_to_start()
-            # if self.can_move_right() == False and self.light_is_on() == False:
-
-                # elif self.compare_item() == None and self.can_move_right() == False:
-                #     # self.back_to_start()
-                #     while self.can_move_left():
-                #         self.move_left()
-
-        # print(self._list)
-
-        # if self.compare_item() == 1 and self.can_move_right == False:
-        #     self.move_left()
-        #     sel
-
-        # self.set_light_off()
-        # for i in range(0, len(self._list) - 1):
-        #     if self._list[i+1] < self._list[i]:
-        #         self._list[i], self._list[i+1] = self._list[i+1], self._list[i]
-        #         self.set_light_on()
-        # if self.light_is_on:
-        #     return self.sort()
 
 
-robo = SortingRobot([5, 4, 9, 2, 11])
+robo = SortingRobot([11, 13, 7, 17, 9, 20, 1, 21, 2, 4, 22,
+                     16, 15, 10, 23, 19, 8, 3, 5, 14, 6, 0, 24, 12, 18])
 robo.sort()
+print(robo._list)
 if __name__ == "__main__":
     # Test our your implementation from the command line
     # with `python robot_sort.py`

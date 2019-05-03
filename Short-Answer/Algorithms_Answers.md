@@ -1,6 +1,6 @@
 Add your answers to the Algorithms exercises here.
 
-1a: o(n^3)
+1a: o(1)
 1b: o(n^3)
 1c: o(n)
 
